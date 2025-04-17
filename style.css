@@ -1,0 +1,275 @@
+:root {
+    --bg-color: #1e1e1e;
+    --text-color: #d4d4d4;
+    --prompt-color: #569cd6;
+    --correct-color: #4ec9b0;
+    --incorrect-color: #f14c4c;
+    --highlight-color: #dcdcaa;
+    --header-bg: #2d2d2d;
+    --border-color: #3c3c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Consolas', 'Monaco', monospace;
+    background-color: #000;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.terminal {
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+    background-color: var(--header-bg);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-title {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.close { background-color: #ff5f56; }
+.minimize { background-color: #ffbd2e; }
+.maximize { background-color: #27c93f; }
+
+.terminal-body {
+    padding: 20px;
+    position: relative;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: #888;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat:not(:last-child) {
+    display: none;
+}
+
+.label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.game-area {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.command-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.command-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.current-command, .next-command {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.command-display, .word-display, .next-word-display {
+    margin-left: 8px;
+}
+
+.output-display {
+    margin-left: 0;
+    padding: 0.25rem 0;
+    min-height: 1.5rem;
+    color: var(--text-color);
+}
+
+.previous-command, .current-command, .next-command {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.previous-command {
+    opacity: 0.7;
+}
+
+.current-command {
+    opacity: 1;
+}
+
+.next-command {
+    opacity: 0.5;
+}
+
+.prompt {
+    color: var(--prompt-color);
+    margin-right: 8px;
+    user-select: none;
+}
+
+.word-display {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 1.2rem;
+    min-height: 1.5rem;
+}
+
+.next-commands {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.overlay-content {
+    text-align: center;
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-content h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--prompt-color);
+}
+
+.overlay-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.overlay-content p:hover {
+    opacity: 0.8;
+}
+
+.result-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.result-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result-stat .label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #888;
+}
+
+.result-stat span:last-child {
+    font-size: 2rem;
+    color: var(--prompt-color);
+}
+
+.restart-message {
+    color: #888;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.shortcuts {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.shortcut {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+kbd {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.correct {
+    color: var(--correct-color);
+}
+
+.incorrect {
+    color: var(--incorrect-color);
+    text-decoration: underline;
+}
+
+.current {
+    border-left: 2px solid var(--highlight-color);
+    animation: none;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+} 

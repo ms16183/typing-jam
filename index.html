@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Typing Game</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="terminal-title">Linux Typing Game</div>
+        <div class="terminal-controls">
+          <span class="control close"></span>
+          <span class="control minimize"></span>
+          <span class="control maximize"></span>
+        </div>
+      </div>
+      <div class="terminal-body">
+        <div class="stats">
+          <div class="stat">
+            <span class="label">WPM</span>
+            <span id="wpm">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">ACC</span>
+            <span id="accuracy">100%</span>
+          </div>
+          <div class="stat">
+            <span class="label">TIME</span>
+            <span id="time">60</span>
+          </div>
+        </div>
+        
+        <div class="game-area">
+          <div class="previous-command">
+            <div class="command-wrapper">
+              <div class="command-line">
+                <span class="prompt">user@linux: $</span>
+                <div id="previous-command-display" class="command-display"></div>
+              </div>
+              <div id="previous-output-display" class="output-display"></div>
+            </div>
+          </div>
+          <div class="current-command">
+            <span class="prompt">user@linux:~$</span>
+            <div id="word-display" class="word-display"></div>
+          </div>
+          <div class="next-command">
+            <span class="prompt">user@linux:~$</span>
+            <div id="next-word-display" class="next-word-display"></div>
+          </div>
+        </div>
+
+        <div id="start-screen" class="overlay">
+          <div class="overlay-content">
+            <h1>Linux Typing Game</h1>
+            <p>画面をクリックしてスタート</p>
+            <div class="shortcuts">
+              <div class="shortcut">
+                <kbd>Esc</kbd>
+                <span>リスタート</span>
+              </div>
+              <div class="shortcut">
+                <kbd>Tab</kbd>
+                <span>次の単語</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="result-screen" class="overlay" style="display: none;">
+          <div class="overlay-content">
+            <h1>ゲーム終了</h1>
+            <div class="result-stats">
+              <div class="result-stat">
+                <span class="label">時間</span>
+                <span id="final-time">0:00</span>
+              </div>
+              <div class="result-stat">
+                <span class="label">WPM</span>
+                <span id="final-wpm">0</span>
+              </div>
+              <div class="result-stat">
+                <span class="label">正確率</span>
+                <span id="final-accuracy">100%</span>
+              </div>
+            </div>
+            <p class="restart-message">画面をクリックしてもう一度プレイ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

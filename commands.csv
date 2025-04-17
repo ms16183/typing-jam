@@ -1,0 +1,9 @@
+command,output
+sudo su -, 
+uname -n; whoami; pwd; date, linux root /root 2025/01/01 00:00:00
+cd /tmp; pwd, /tmp
+ls -lh, rw-r--r-- root root 1230 text.txt
+cat text.txt, Hello Linux!
+cat text.txt | sed 's/Linux/Unix/', Hello Unix!
+exit,
+exit,
